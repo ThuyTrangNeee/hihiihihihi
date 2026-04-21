@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Em có điều muốn nói...</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #F8F0FC; /* Màu nền pastel nhẹ nhàng */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 1;
+            max-width: 90%;
+        }
+        h1 {
+            color: #8A78A4; /* Màu chữ dịu mắt */
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+        .btn-group {
+            margin-top: 30px;
+            position: relative;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        #yesBtn {
+            background-color: #ff9a9e;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+        }
+        #yesBtn:hover {
+            transform: scale(1.1);
+            background-color: #ff758c;
+        }
+        #noBtn {
+            background-color: #e0e0e0;
+            color: #555;
+            position: relative; /* Sẽ đổi thành absolute khi chuột chạm vào bằng JS */
+        }
+        .visual-content {
+            width: 250px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="main-box">
+        <img class="visual-content" src="https://media.tenor.com/efgXwz5y4-cAAAAi/peach-goma.gif" alt="Cute animation">
+        
+        <h1>Chị làm người yêu em nhé? 🥺</h1>
+        
+        <div class="btn-group">
+            <button id="yesBtn">Chị đồng ý ❤️</button>
+            <button id="noBtn">Không đâu 😜</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const mainBox = document.getElementById('main-box');
+
+        // Hiệu ứng làm nút "Không" chạy trốn
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.floor(Math.random() * (window.innerWidth - noBtn.clientWidth - 50));
+            const y = Math.floor(Math.random() * (window.innerHeight - noBtn.clientHeight - 50));
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${Math.max(10, x)}px`;
+            noBtn.style.top = `${Math.max(10, y)}px`;
+        });
+
+        // Hiệu ứng khi bấm nút "Đồng ý"
+        yesBtn.addEventListener('click', () => {
+            mainBox.innerHTML = `
+                <img class="visual-content" src="https://media.tenor.com/zW-w0bAEE5EAAAAi/peach-goma.gif" alt="Happy animation">
+                <h1 style="color: #ff758c;">hihi em biết mà 🥰</h1>
+                <p style="color: #888; margin-top:15px; font-size: 16px;">Vậy là chốt rồi nhé<3</p>
+            `;
+        });
+    </script>
+
+</body>
+</html>
